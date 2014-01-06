@@ -30,12 +30,15 @@
 
 		var defaults = {
 				keyWord: '',
-				textSizeRevise: 0
+				textSizeRevise: 0,
+				autoFocus: true;
 	         };
 		
 		var options = $.extend(defaults, opts);
 		var currentResultLine = -1;
 		var scrollTarget = this;
+		var startIndex = $(this).val().indexOf(options.keyWord);
+        	var textareaObj = document.getElementById($(this).attr('id'));
 		var lineArray = $(this).val().split("\n");
 		var eachRowHeight =parseInt($(this).css('font-size'), 10);
 
@@ -61,6 +64,10 @@
 			});
 			if(didSuccessfulSearch){
 				$(scrollTarget).scrollTop(targetScrollPos);
+				if(options.autoFocus){
+				  textareaObj.setSelectionRange(startIndex, startIndex+(options.keyWord.length));
+        	                  textareaObj.focus();
+				}
 			}else{
 				searchToEndFunc();
 			}
