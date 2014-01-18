@@ -31,7 +31,7 @@
 		var defaults = {
 				keyWord: '',
 				textSizeRevise: 0,
-				autoFocus: true;
+				autoFocus: true
 	         };
 		
 		var options = $.extend(defaults, opts);
